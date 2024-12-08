@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+* {font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;}
+body {margin: 0; background-color: #111;}
+
+::selection {background-color: #04272d; color: #fff;}
+
+
+.wrap {overflow: hidden;}
+
+/* ======== 책자영역 ======== */
+.view_book {aspect-ratio: 210 / 297; margin: 0 auto; background-color: #000; height: 100vh; position: relative;}
+.view_book img {width: 100%; display: block;}
+
+
+.view_book .info_page {position: absolute; bottom: 5%; left: calc(100% + 20px); display: flex; width: max-content; gap: 2px;}
+.view_book .info_page span {font-size: 20px; font-weight: 400; color: #fff; transform: skewX(-12deg); opacity: .7;}
+.view_book .info_page span:last-child {opacity: .5;}
+
+.view_book .open_menu {position: absolute; top: 5%; left: calc(100% + 20px); width: 50px; aspect-ratio: 1; background: url(../images/source/menu.png) no-repeat center/contain; z-index: 50; cursor: pointer;}
+
+.page_con {width: 100%;}
+.page_con.video {position: relative;}
+.page_con .video_con {position: absolute; display: flex; align-items: flex-start; gap: 15px; z-index: 10;}
+.page_con .video_con .tit {width: max-content; padding: 6px 16px; border-radius: 100px; border: 2px solid #000; background-color: #146A70;}
+.page_con .video_con .tit span {font-size: 14px; font-weight: 500; color: #fff; line-height: 1; transform: skewX(-12deg); display: inline-block;}
+.page_con .video_con .video_thumb {aspect-ratio: 3 / 2.5; border-radius: 15px; border: 2px solid #000; background-color: #146A70; padding: 12px; height: 170px; position: relative;}
+.page_con .video_con .video_thumb::after {content: ""; display: block; width: 40px; aspect-ratio: 1; background: url(../images/source/play.png) no-repeat center/contain; top: 50%; left: 50%; transform: translate(-50%, -50%); position: absolute;}
+.page_con .video_con .video_thumb img {width: 100%; height: 100%; display: block; border-radius: 12px; overflow: hidden; object-fit: cover;}
+
+
+.video_con.site01 {right: 14%; top: 43%;}
+.video_con.site02 {top: 20%; right: 12%;}
+#video02 video, #video03 video, #video04 video, #video05 video, #video06 video, #video07 video, #video08 video, #video09 video {width: 60%;}
+.video_con.site03 {top: 19%; right: 12%;}
+.video_con.site04 {bottom: 30%; right: 10%;}
+.video_con.site09 {bottom: 30%; left: 50%; transform: translateX(-50%);}
+.video_con.site05, .video_con.site06, .video_con.site07, .video_con.site08, .video_con.site10 {left: 50%; top: 50%; transform: translate(-50%, -50%);}
+#video10 video {aspect-ratio: 16 / 9; object-fit: cover;}
+
+.play_box {width: 100%; position: absolute; top: 50%; left: 50%; background-color: #00000075; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; height: 100%; z-index: 0; visibility: hidden;}
+.play_box.on {visibility: visible; z-index: 15;}
+.play_box video {width: 100%;}
+
+
+
+
+/* ======== 컨트롤 ======== */
+.control {width: 100%; position: fixed; height: 100vh; display: flex; top: 0; left: 0; z-index: 5;}
+.control div {width: 50%; cursor: pointer; position: relative;}
+.control div i {display: block; width: 30px; aspect-ratio: 1; position: absolute; top: 50%; transform: translateY(-50%); opacity: .5;}
+.control .btn_prev i {left: 5%; background: url(../images/source/btn_prev.png) no-repeat center/contain;}
+.control .btn_next i {right: 5%; background: url(../images/source/btn_next.png) no-repeat center/contain;}
+
+
+
+
+/* ======== 버거메뉴 ======== */
+.menu {position: fixed; top: 0; left: 0; z-index: 100; width: 100vw; height: 100vh; background-color: #00000050; display: none;}
+.menu_area {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);  background-color: #5FC2D3; border: 2px solid #000; width: 30VW; min-width: 400px;}
+.menu .move_box {width: 100%; display: flex; justify-content: center; align-items: center; padding: 20px 0; border-bottom: 2px solid #000;}
+input[type="number"] {outline: none; border: none; border-bottom: 2px solid #000; padding: 4px 8px; background-color: transparent; font-size: 18px; width: 40px; text-align: center; margin: 0;}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox  */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+.move_box .move_con span {font-size: 16px; font-weight: 600; padding-left: 5px; cursor: pointer;}
+
+
+
+.menu .menu_box {display: flex; flex-direction: column; padding: 40px 50px;}
+.menu_box dl {display: flex; width: 100%; justify-content: space-between; align-items: center; padding: 15px 0; cursor: pointer;}
+.menu_box dl dt {font-size: 20px; font-weight: 600; position: relative;}
+.menu_box dl dt::after {content: ""; display: block; width: 10px; aspect-ratio: 1; background: url(../images/source/move.png) no-repeat center/contain; display: none; position: absolute; top: 4px; left: calc(100% + 10px);}
+.menu_box dl:hover dt::after {display: block;}
+.menu_box dl:hover dt {text-decoration: underline;}
+.menu_box dl dd {font-size: 20px; font-weight: 600; font-family: "Outfit", sans-serif !important;}
+
+.site {display: flex; border-top: 2px dashed #000; gap: 20px; margin-top: 10px; padding-top: 25px; align-items: center; justify-content: space-between;}
+.site p {text-align: center; transform: skewX(-12deg); font-size: 16px; font-weight: 600; color: #094a55;}
+.site .site_list {display: flex; align-items: center; gap: 15px;}
+a {text-decoration: none; color: #111;}
+a:active {color: #111;}
+.site a {display: flex; align-items: center; gap: 8px;}
+.site a i {display: block; width: 30px; aspect-ratio: 1;}
+.site a i.link {background: url(../images/source/link.png) no-repeat center/contain;}
+.site a i.notion {background: url(../images/source/notion.png) no-repeat center/contain;}
+.site a i.insta {background: url(../images/source/instagram.png) no-repeat center/contain;}
+.site a span {font-size: 15px; 
+    /* font-family: "Outfit", sans-serif !important; */
+    font-weight: 500;
+    display: none;
+}
+
+
+.close_menu {position: absolute; top: calc(100% + 20px); left: 50%; transform: translateX(-50%); width: 50px; aspect-ratio: 1; border-radius: 100%; overflow: hidden; background: url(../images/source/close_menu.png) no-repeat center/cover; cursor: pointer;}
+
+
+
+/* ======== 750px ======= */
+@media screen and (max-width: 750px) {
+    .control div i {width: 15px;}
+    .view_book .info_page {left: calc(100% + 10px);}
+    .view_book .info_page span {font-size: 16px;}
+    .view_book .open_menu {width: 40px; left: calc(100% + 10px);}
+
+    .page_con .video_con {gap: 10px;}
+}
+
+
+/* ======== 550px ======= */
+@media screen and (max-width: 550px) {
+    .view_book {aspect-ratio: initial; display: flex; align-items: center; justify-content: center;}
+    .control div i {display: none;}
+    .view_book .info_page {bottom: 3%; left: 3%;}
+    .view_book .open_menu {bottom: 2%; right: 3%; left: initial; top: initial; width: 36px;}
+
+    .menu_area {width: 90vw; min-width: initial;}
+    .menu .move_box {padding: 15px 0;}
+    .move_box .move_con span {font-size: 15px;}
+    input[type="number"] {font-size: 16px;}
+    .menu_box dl {padding: 12px 0;}
+    .menu_box dl dt {font-size: 18px;}
+    .menu_box dl dd {font-size: 18px;}
+    .menu .menu_box {padding: 30px;}
+
+    .site {flex-direction: column; padding-top: 20px; gap: 12px;}
+    .site p {font-size: 15px;}
+}
+
+
+
+/* ======== 450px ======= */
+@media screen and (max-width: 450px) {
+  .page_con .video_con .video_thumb {height: 120px; padding: 8px; border-radius: 10px;}
+  .page_con .video_con .video_thumb img {border-radius: 6px;}
+  .page_con .video_con {flex-direction: column-reverse; align-items: center; gap: 5px;}
+  #video02 video, #video03 video, #video04 video, #video05 video {width: 70%;}
+  .video_con.site01 {right: initial; left: 50%; transform: translate(-50%); flex-direction: row; align-items: flex-start;}
+  .page_con .video_con .tit span {font-size: 13px;}
+  .page_con .video_con .tit {padding: 4px 14px;}
+  .video_con.site04 {bottom: 20%;}
+}
